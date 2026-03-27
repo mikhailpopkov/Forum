@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { MainLayout } from "@widgets/layout";
+import { AuthLayout, MainLayout } from "@/widgets";
+import { News, Login, Users } from "@/pages";
 
 const router = createBrowserRouter([
   {
@@ -7,6 +8,20 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
+        element: <News />,
+      },
+      {
+        path: "/users",
+        element: <Users />,
+      },
+    ],
+  },
+  {
+    element: <AuthLayout />,
+    children: [
+      {
+        path: "/login",
+        element: <Login />,
       },
     ],
   },

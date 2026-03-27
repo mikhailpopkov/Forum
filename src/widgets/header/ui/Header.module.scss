@@ -1,0 +1,104 @@
+.header {
+  padding: 25px 0 0;
+
+  &Wrapper {
+    max-width: 987px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px;
+    background: linear-gradient(
+      123.64deg,
+      rgba(255, 255, 255, 0) -22.38%,
+      rgba(255, 255, 255, 0.039) 70.38%
+    );
+    backdrop-filter: blur(21px);
+    padding: 24px;
+    box-sizing: border-box;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+  }
+
+  &Logo {
+    background: linear-gradient(
+      97.89deg,
+      #ffffff 70.67%,
+      rgba(117, 122, 140, 0) 108.55%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 14px;
+  }
+
+  &List {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 30px;
+
+    li {
+      list-style-type: none;
+
+      a {
+        display: block;
+        font-size: 12px;
+        font-weight: 700;
+        color: #fff;
+        text-decoration: none;
+        padding-left: 15px;
+        padding-bottom: 3px;
+        position: relative;
+        text-transform: uppercase;
+        line-height: 1;
+
+        &::before {
+          position: absolute;
+          content: "";
+          width: 0;
+          height: 1px;
+          bottom: 0;
+          left: 15px;
+          background-color: #fff;
+          transition: width 0.3s ease-in-out;
+        }
+
+        &:hover {
+          &::before {
+            width: calc(100% - 15px);
+          }
+        }
+      }
+    }
+
+    &News {
+      &::after {
+        content: "";
+        position: absolute;
+        width: 11px;
+        height: 11px;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background: url(/public/news.svg) no-repeat;
+      }
+    }
+
+    &Users {
+      &::after {
+        content: "";
+        position: absolute;
+        width: 11px;
+        height: 11px;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background: url(/public/users.svg) no-repeat;
+      }
+    }
+  }
+}
