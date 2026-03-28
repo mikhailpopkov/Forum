@@ -9,6 +9,31 @@
       flex-direction: column;
       gap: 25px;
       max-width: 350px;
+      margin: 0 0 22px;
+    }
+  }
+
+  &Reg {
+    width: 50%;
+    padding: 110px 55px 0;
+    box-sizing: border-box;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      max-width: 455px;
+      padding: 45px 55px 45px 48px;
+      background: linear-gradient(
+        123.64deg,
+        rgba(255, 255, 255, 0) -22.71%,
+        rgba(255, 255, 255, 0.039) 70.04%
+      );
+      backdrop-filter: blur(21px);
+      border-radius: 30px;
+      box-sizing: border-box;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      margin: 0 0 22px;
     }
   }
 
@@ -61,5 +86,20 @@
   &Error {
     color: red;
     padding-top: 5px;
+  }
+
+  &Redirect {
+    color: #a0aec0;
+    font-size: 14px;
+    text-align: center;
+    align-items: 1.4;
+    max-width: 350px;
+
+    a {
+      font-weight: 600;
+      color: #fff;
+      font-size: 14px;
+      text-decoration: none;
+    }
   }
 }

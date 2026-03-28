@@ -24,6 +24,28 @@ export const login = createAsyncThunk<
   }
 });
 
+interface RegisterType {
+  email: string;
+  password: string;
+  name: string;
+}
+
+export const registration = createAsyncThunk<
+  LoginUser,
+  RegisterType,
+  { rejectValue: string }
+>("auth/register", async ({ email, password, name }, { rejectWithValue }) => {
+  try {
+    const res = await AuthUser.RegisterUser(email, password, name);
+    return res.data;
+  } catch (error) {
+    if (error instanceof Error) {
+      console.log(error);
+    }
+    return rejectWithValue("Произошла ошибка при регистрации");
+  }
+});
+
 interface UserState {
   user: LoginUser | null;
   status: "loading" | "success" | "error" | "idle";
@@ -54,9 +76,26 @@ const authSlice = createSlice({
 
         localStorage.setItem("AccessToken", action.payload.access_token);
         localStorage.setItem("RefreshToken", action.payload.refresh_token);
-        window.location.href = "/";
       })
       .addCase(login.rejected, (state) => {
+        state.user = null;
+        state.status = "error";
+        state.isAuth = false;
+      })
+      .addCase(registration.pending, (state) => {
+        state.user = null;
+        state.status = "loading";
+        state.isAuth = false;
+      })
+      .addCase(registration.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.status = "success";
+        state.isAuth = true;
+
+        localStorage.setItem("AccessToken", action.payload.access_token);
+        localStorage.setItem("RefreshToken", action.payload.refresh_token);
+      })
+      .addCase(registration.rejected, (state) => {
         state.user = null;
         state.status = "error";
         state.isAuth = false;

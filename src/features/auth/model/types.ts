@@ -8,6 +8,12 @@ export interface FormValidation {
   password: string;
 }
 
+export interface FormRegValidation {
+  email: string;
+  password: string;
+  name: string;
+}
+
 export interface LoginUser {
   user: User;
   access_token: string;

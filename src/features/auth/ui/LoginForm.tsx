@@ -2,13 +2,15 @@ import { Button } from "@/shared";
 import type { FormProps, FormValidation } from "../model/types";
 import cl from "./Auth.module.scss";
 import { useForm } from "react-hook-form";
-import { schema } from "../model/schema";
+import { loginSchema } from "../model/schema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useAppDispatch } from "@/app/store/store";
 import { login } from "../model/authSlice";
+import { Link, useNavigate } from "react-router";
 
 export const LoginForm: React.FC<FormProps> = ({ title, subtitle }) => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -16,12 +18,13 @@ export const LoginForm: React.FC<FormProps> = ({ title, subtitle }) => {
     formState: { errors },
   } = useForm<FormValidation>({
     mode: "onChange",
-    resolver: yupResolver(schema),
+    resolver: yupResolver(loginSchema),
   });
 
   const onSubmit = (data: FormValidation) => {
     dispatch(login(data));
     reset();
+    navigate("/");
   };
 
   return (
@@ -57,6 +60,9 @@ export const LoginForm: React.FC<FormProps> = ({ title, subtitle }) => {
         </div>
         <Button>Войти</Button>
       </form>
+      <div className={cl.formRedirect}>
+        У вас нет аккаунта? <Link to="/registration">Зарегистрироваться</Link>
+      </div>
     </div>
   );
 };

@@ -12,4 +12,16 @@ export default class AuthUser {
       password,
     });
   }
+
+  static async RegisterUser(
+    email: string,
+    password: string,
+    name: string,
+  ): Promise<AxiosResponse<LoginUser>> {
+    return await $api.post<LoginUser>("/auth/register", {
+      email,
+      password,
+      name,
+    });
+  }
 }
