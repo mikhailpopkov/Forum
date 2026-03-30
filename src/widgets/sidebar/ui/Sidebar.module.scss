@@ -1,0 +1,118 @@
+.sidebar {
+  position: -webkit-sticky;
+  position: sticky;
+  width: 264px;
+  height: max-content;
+  flex-shrink: 0;
+  background: linear-gradient(
+    111.84deg,
+    rgba(6, 11, 38, 0.94) 59.3%,
+    rgba(26, 31, 55, 0) 100%
+  );
+  backdrop-filter: blur(60px);
+  border-radius: 20px;
+  padding: 35px 22px 23px;
+  box-sizing: border-box;
+
+  &Title {
+    position: relative;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    margin: 0 0 22px;
+    text-transform: uppercase;
+    padding: 0 0 30px;
+    background: linear-gradient(
+      97.89deg,
+      #ffffff 70.67%,
+      rgba(117, 122, 140, 0) 108.55%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(
+        97.89deg,
+        rgba(117, 122, 140, 0) -25.45%,
+        #ffffff 70.67%,
+        rgba(117, 122, 140, 0) 108.55%
+      );
+    }
+  }
+
+  &Subtitle {
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin: 0 0 12px;
+  }
+
+  &List {
+    margin: 0;
+    padding: 0;
+
+    &:not(:last-child) {
+      margin: 0 0 12px;
+    }
+
+    li {
+      list-style-type: none;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    a {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 12px 20px 12px 16px;
+      font-size: 14px;
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+
+      span {
+        width: 30px;
+        height: 30px;
+        border-radius: 12px;
+        flex-shrink: 0;
+        background-color: #1a1f37;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+          path {
+            fill: #0075ff;
+          }
+        }
+      }
+    }
+  }
+}
+
+a.active {
+  background: #1a1f37;
+  border-radius: 15px;
+
+  span {
+    background-color: #0075ff;
+
+    svg {
+      path {
+        fill: #fff;
+      }
+    }
+  }
+}

@@ -14,3 +14,9 @@ interface User {
   createdAt: string;
   updatedAt: string;
 }
+
+declare module "*.svg?react" {
+  import * as React from "react";
+  const component: React.FC<React.SVGProps<SVGSVGElement>>;
+  export default component;
+}

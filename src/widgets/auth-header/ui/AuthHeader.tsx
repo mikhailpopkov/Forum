@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import cl from "./Header.module.scss";
+import cl from "./AuthHeader.module.scss";
 import { routes } from "@/shared";
 
-export const Header: React.FC = () => {
+export const AuthHeader: React.FC = () => {
   return (
     <header className={cl.header}>
       <div className={cl.headerWrapper}>

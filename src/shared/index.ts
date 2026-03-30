@@ -1,2 +1,2 @@
 export { routes } from "./router/routes";
-export { LoginBanner, Button } from "./ui";
+export { LoginBanner, Button, SvgComponent } from "./ui";

@@ -67,6 +67,12 @@ body {
   color: #fff;
 }
 
+body:has(.sidebar) {
+  background-image: url(/Background.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
 h1,
 h2 {
   font-family: var(--heading);
