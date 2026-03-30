@@ -1,0 +1,21 @@
+.block {
+  padding: 17.5px 17.5px 17.5px 21.5px;
+  border-radius: 20px;
+  background: linear-gradient(
+    126.97deg,
+    rgba(6, 11, 38, 0.74) 28.26%,
+    rgba(26, 31, 55, 0.5) 91.2%
+  );
+  backdrop-filter: blur(60px);
+  width: calc(25% - 72px / 4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+
+  &Value,
+  &Title {
+    font-size: 18px;
+    font-weight: 700;
+  }
+}

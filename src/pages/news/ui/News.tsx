@@ -1,3 +1,9 @@
+import { CurrencyList } from "@/widgets";
+
 export const News: React.FC = () => {
-  return <h1>News</h1>;
+  return (
+    <div className="b-news">
+      <CurrencyList />
+    </div>
+  );
 };
