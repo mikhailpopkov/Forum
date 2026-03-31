@@ -2,7 +2,7 @@ import News from "./icons/news.svg?react";
 import Users from "./icons/users.svg?react";
 import Login from "./icons/sign-in.svg?react";
 import Registration from "./icons/sign-up.svg?react";
-import Profile from "./icons/profile.svg";
+import Profile from "./icons/profile.svg?react";
 
 interface SvgName {
   name: string;

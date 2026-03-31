@@ -6,7 +6,7 @@ import { useAppSelector } from "@/app/store/store";
 
 export const Sidebar: React.FC = () => {
   const isAuth = useAppSelector((state) => state.auth.isAuth);
-
+  console.log(isAuth);
   return (
     <div className={`${cl.sidebar} sidebar`}>
       <div className={cl.sidebarTitle}>Dashboard Forum</div>

@@ -24,4 +24,12 @@ export default class AuthUser {
       name,
     });
   }
+
+  static async CheckUser(): Promise<AxiosResponse<UserMe>> {
+    return await $api.get<UserMe>("/users/me");
+  }
+
+  static async LogoutUser(): Promise<AxiosResponse> {
+    return await $api.get("/auth/logout");
+  }
 }

@@ -15,7 +15,7 @@ export interface FormRegValidation {
 }
 
 export interface LoginUser {
-  user: User;
+  user?: User;
   access_token: string;
   refresh_token: string;
 }

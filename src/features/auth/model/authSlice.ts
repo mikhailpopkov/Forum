@@ -46,8 +46,41 @@ export const registration = createAsyncThunk<
   }
 });
 
+export const checkUser = createAsyncThunk<
+  UserMe,
+  void,
+  { rejectValue: string }
+>("auth/checkUser", async (_, { rejectWithValue }) => {
+  try {
+    const res = await AuthUser.CheckUser();
+    return res.data;
+  } catch (error) {
+    if (error instanceof Error) {
+      console.log(error);
+    }
+
+    return rejectWithValue("Ошибка при проверки авторизации");
+  }
+});
+
+export const logout = createAsyncThunk<null, void, { rejectValue: string }>(
+  "auth/logout",
+  async (_, { rejectWithValue }) => {
+    try {
+      await AuthUser.LogoutUser();
+      return null;
+    } catch (error) {
+      if (error instanceof Error) {
+        console.log(error);
+      }
+
+      return rejectWithValue("Произошла ошибка при выходе из аккаунта");
+    }
+  },
+);
+
 interface UserState {
-  user: LoginUser | null;
+  user: LoginUser | UserMe | null;
   status: "loading" | "success" | "error" | "idle";
   isAuth: boolean;
 }
@@ -99,6 +132,32 @@ const authSlice = createSlice({
         state.user = null;
         state.status = "error";
         state.isAuth = false;
+      })
+      .addCase(checkUser.pending, (state) => {
+        state.user = null;
+        state.status = "loading";
+        state.isAuth = false;
+      })
+      .addCase(checkUser.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.status = "success";
+        state.isAuth = true;
+      })
+      .addCase(checkUser.rejected, (state) => {
+        state.user = null;
+        state.status = "error";
+        state.isAuth = false;
+
+        localStorage.removeItem("AccessToken");
+        localStorage.removeItem("RefreshToken");
+      })
+      .addCase(logout.fulfilled, (state) => {
+        state.user = null;
+        state.isAuth = false;
+        state.status = "idle";
+
+        localStorage.removeItem("AccessToken");
+        localStorage.removeItem("RefreshToken");
       });
   },
 });
