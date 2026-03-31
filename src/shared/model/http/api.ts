@@ -52,7 +52,12 @@ $api.interceptors.response.use(
         try {
           const res = await axios.post<RefreshType>(
             "http://nest.tomfoolery.ru/auth/refresh",
-            { refresh_token: refreshToken },
+            null,
+            {
+              headers: {
+                Authorization: `Bearer ${refreshToken}`,
+              },
+            },
           );
 
           localStorage.setItem("AccessToken", res.data.access_token);
@@ -60,7 +65,7 @@ $api.interceptors.response.use(
 
           originRequest.headers.Authorization = `Bearer ${res.data.access_token}`;
 
-          return axios(originRequest);
+          return $api(originRequest);
         } catch (refreshError) {
           if (axios.isAxiosError(refreshError)) {
             if (refreshError.response?.status == 403) {

@@ -1,6 +1,7 @@
 import { $api } from "@/shared/model";
 import type { LoginUser } from "../model/types";
 import type { AxiosResponse } from "axios";
+import axios from "axios";
 
 export default class AuthUser {
   static async LoginUser(
@@ -23,6 +24,20 @@ export default class AuthUser {
       password,
       name,
     });
+  }
+
+  static async RefreshUser(
+    refreshToken: string,
+  ): Promise<AxiosResponse<LoginUser>> {
+    return await axios.post<LoginUser>(
+      "http://nest.tomfoolery.ru/auth/refresh",
+      null,
+      {
+        headers: {
+          Authorization: `Bearer ${refreshToken}`,
+        },
+      },
+    );
   }
 
   static async CheckUser(): Promise<AxiosResponse<UserMe>> {
