@@ -45,6 +45,6 @@ export default class AuthUser {
   }
 
   static async LogoutUser(): Promise<AxiosResponse> {
-    return await $api.get("/auth/logout");
+    return await $api.post("/auth/logout");
   }
 }

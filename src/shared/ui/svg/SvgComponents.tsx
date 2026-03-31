@@ -3,6 +3,7 @@ import Users from "./icons/users.svg?react";
 import Login from "./icons/sign-in.svg?react";
 import Registration from "./icons/sign-up.svg?react";
 import Profile from "./icons/profile.svg?react";
+import Logout from "./icons/sign-out.svg?react";
 
 interface SvgName {
   name: string;
@@ -24,6 +25,9 @@ export const SvgComponent: React.FC<SvgName> = ({ name }) => {
       break;
     case "profile":
       return <Profile />;
+      break;
+    case "logout":
+      return <Logout />;
       break;
     default:
       return "";

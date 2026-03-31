@@ -2,11 +2,13 @@ import { NavLink } from "react-router";
 import cl from "./Sidebar.module.scss";
 import { routes } from "@/shared";
 import { SvgComponent } from "@/shared";
-import { useAppSelector } from "@/app/store/store";
+import { useAppDispatch, useAppSelector } from "@/app/store/store";
+import { logout } from "@/features/auth/model/authSlice";
 
 export const Sidebar: React.FC = () => {
   const isAuth = useAppSelector((state) => state.auth.isAuth);
-  console.log(isAuth);
+  const dispatch = useAppDispatch();
+
   return (
     <div className={`${cl.sidebar} sidebar`}>
       <div className={cl.sidebarTitle}>Dashboard Forum</div>
@@ -56,14 +58,24 @@ export const Sidebar: React.FC = () => {
             </li>
           </>
         ) : (
-          <li>
-            <NavLink to={routes.profile}>
-              <span>
-                <SvgComponent name="profile" />
-              </span>
-              Профиль
-            </NavLink>
-          </li>
+          <>
+            <li>
+              <NavLink to={routes.profile}>
+                <span>
+                  <SvgComponent name="profile" />
+                </span>
+                Профиль
+              </NavLink>
+            </li>
+            <li>
+              <NavLink onClick={() => dispatch(logout())} to={routes.news}>
+                <span>
+                  <SvgComponent name="logout" />
+                </span>
+                Выйти
+              </NavLink>
+            </li>
+          </>
         )}
       </ul>
     </div>
