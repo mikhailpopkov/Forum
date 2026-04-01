@@ -1,0 +1,23 @@
+.item {
+  width: calc(33.333% - 48px / 3);
+  padding: 21.5px;
+  border-radius: 20px;
+  background: linear-gradient(
+    126.97deg,
+    rgba(6, 11, 40, 0.74) 28.26%,
+    rgba(10, 14, 35, 0.71) 91.2%
+  );
+  backdrop-filter: blur(60px);
+  box-sizing: border-box;
+
+  &Imgbox {
+    margin: 0 0 15px;
+    img {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+      max-height: 263px;
+      border-radius: 20px;
+    }
+  }
+}

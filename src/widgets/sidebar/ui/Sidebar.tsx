@@ -60,7 +60,10 @@ export const Sidebar: React.FC = () => {
         ) : (
           <>
             <li>
-              <NavLink to={routes.profile}>
+              <NavLink
+                className={({ isActive }) => (isActive ? `${cl.active}` : "")}
+                to={routes.profile}
+              >
                 <span>
                   <SvgComponent name="profile" />
                 </span>
