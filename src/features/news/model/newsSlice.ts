@@ -2,13 +2,18 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { NewsType } from "./types";
 import { RequestsNews } from "../api/RequestsNews";
 
+interface FetchNewsType {
+  page: number;
+  limit: number;
+}
+
 export const fetchNews = createAsyncThunk<
   NewsType,
-  void,
+  FetchNewsType,
   { rejectValue: string }
->("news/fetch", async (_, { rejectWithValue }) => {
+>("news/fetch", async ({ page, limit }, { rejectWithValue }) => {
   try {
-    const res = await RequestsNews.FetchNews();
+    const res = await RequestsNews.FetchNews(page, limit);
     return res.data;
   } catch (error) {
     if (error instanceof Error) {
