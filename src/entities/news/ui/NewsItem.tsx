@@ -6,7 +6,6 @@ interface NewsItemProps {
 }
 
 export const NewsItem: React.FC<NewsItemProps> = ({ data }) => {
-  console.log(data);
   return (
     <div className={cl.item}>
       {data.imageUrl && (

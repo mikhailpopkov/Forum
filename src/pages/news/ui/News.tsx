@@ -2,6 +2,8 @@ import { useAppDispatch } from "@/app/store/store";
 import { fetchNews } from "@/features";
 import { CurrencyList, NewsList } from "@/widgets";
 import { useEffect } from "react";
+import cl from "./News.module.scss";
+import { UserBanner } from "@/entities";
 
 export const News: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -11,8 +13,11 @@ export const News: React.FC = () => {
   }, []);
 
   return (
-    <div className="b-news">
+    <div className={cl.news}>
       <CurrencyList />
+      <div className={cl.newsEntities}>
+        <UserBanner />
+      </div>
       <NewsList />
     </div>
   );
