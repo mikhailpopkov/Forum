@@ -79,27 +79,6 @@ export const logout = createAsyncThunk<null, void, { rejectValue: string }>(
   },
 );
 
-interface RefreshTokenType {
-  refreshToken: string;
-}
-
-export const refresh = createAsyncThunk<
-  LoginUser,
-  RefreshTokenType,
-  { rejectValue: string }
->("auth/refresh", async ({ refreshToken }, { rejectWithValue }) => {
-  try {
-    const res = await AuthUser.RefreshUser(refreshToken);
-    return res.data;
-  } catch (error) {
-    if (error instanceof Error) {
-      console.log(error);
-    }
-
-    return rejectWithValue("Ошибка при повторной авторизации");
-  }
-});
-
 interface UserState {
   user: LoginUser | UserMe | null;
   status: "loading" | "success" | "error" | "idle";
@@ -177,22 +156,6 @@ const authSlice = createSlice({
 
         localStorage.removeItem("AccessToken");
         localStorage.removeItem("RefreshToken");
-      })
-      .addCase(refresh.pending, (state) => {
-        state.status = "loading";
-      })
-      .addCase(refresh.fulfilled, (state, action) => {
-        state.user = action.payload;
-        state.isAuth = true;
-        state.status = "success";
-
-        localStorage.setItem("AccessToken", action.payload.access_token);
-        localStorage.setItem("RefreshToken", action.payload.refresh_token);
-      })
-      .addCase(refresh.rejected, (state) => {
-        state.user = null;
-        state.isAuth = false;
-        state.status = "error";
       });
   },
 });

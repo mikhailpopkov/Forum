@@ -39,7 +39,10 @@ $api.interceptors.response.use(
     if (axios.isAxiosError(error)) {
       const originRequest = error.config as CustomAxiosRequestConfig;
 
-      if (error.response?.status == 401 && !originRequest._retry) {
+      if (
+        error.response?.status == 401 ||
+        (error.response?.status == 401 && !originRequest._retry)
+      ) {
         originRequest._retry = true;
 
         const refreshToken: string | null =
@@ -50,7 +53,7 @@ $api.interceptors.response.use(
         }
 
         try {
-          const res = await axios.post<RefreshType>(
+          const res = await $api.post<RefreshType>(
             "http://nest.tomfoolery.ru/auth/refresh",
             null,
             {

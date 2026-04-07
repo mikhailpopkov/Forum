@@ -12,7 +12,7 @@ export const UserBanner: React.FC = () => {
           <div className={cl.bannerWrapper}>
             <div className={cl.bannerText}>
               Добро пожаловать, <br />
-              <span>{"user" in user ? user.user?.name : ""}</span>
+              <span>{"user" in user ? user.user?.name : user.name}</span>
               Вам доступны все возможности нашего ресурса
             </div>
             <Link to={routes.profile}>Профиль</Link>
