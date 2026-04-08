@@ -74,3 +74,12 @@ interface Tags {
   id: number;
   name: string;
 }
+
+interface Meta {
+  page: number;
+  limit: number;
+  total: number;
+  totalPages: number;
+  hasNextPage: boolean;
+  hasPreviousPage: boolean;
+}

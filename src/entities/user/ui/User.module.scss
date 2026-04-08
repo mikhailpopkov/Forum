@@ -1,0 +1,44 @@
+tr {
+  &:last-child {
+    td {
+      padding: 11px 0 0;
+      border: none;
+    }
+  }
+}
+
+td {
+  font-size: 14px;
+  padding: 11px 0;
+  border-bottom: 1px solid #56577a;
+
+  a {
+    color: #a0aec0;
+    position: relative;
+    padding-right: 23px;
+    text-decoration: none;
+
+    &:hover {
+      &::after {
+        right: 0;
+      }
+    }
+
+    &::after {
+      position: absolute;
+      content: "";
+      width: 13px;
+      height: 13px;
+      right: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: url("/arrow.svg") no-repeat;
+      transition: right 0.3s ease-in-out;
+    }
+  }
+}
+.user {
+  &Email {
+    color: #56577a;
+  }
+}
