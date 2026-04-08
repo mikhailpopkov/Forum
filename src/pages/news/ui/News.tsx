@@ -1,5 +1,5 @@
 import { useAppDispatch } from "@/app/store/store";
-import { fetchNews } from "@/features";
+import { fetchNews, MainChart } from "@/features";
 import { CurrencyList, NewsList } from "@/widgets";
 import { useEffect } from "react";
 import cl from "./News.module.scss";
@@ -17,6 +17,7 @@ export const News: React.FC = () => {
       <CurrencyList />
       <div className={cl.newsEntities}>
         <UserBanner />
+        <MainChart />
       </div>
       <NewsList />
     </div>
